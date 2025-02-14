@@ -1,10 +1,13 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Maven+Pro:wght@400..900&display=swap");
+
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --font-display: "Maven pro", cursive;
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -88,7 +91,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -114,7 +117,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 @layer base {
