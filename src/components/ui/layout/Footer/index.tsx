@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="flex h-50 flex-col gap-5 bg-black py-10">
       <div className="mx-auto flex w-full max-w-5xl justify-between">
-        <div className="flex max-w-[320px] flex-col items-start gap-3">
+        <div className="flex max-w-sm flex-col items-start gap-3">
           <Logo bg="dark" />
           <p className="text-sm text-white">
             O CodanteVagas conecta candidatos a empregos ideais, oferecendo
