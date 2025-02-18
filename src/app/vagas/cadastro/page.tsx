@@ -34,8 +34,8 @@ export default function CadastroPage() {
   }
 
   return (
-    <div>
-      <h1 className="pb-12 text-3xl font-black">Cadastrar Vaga</h1>
+    <>
+      <h1 className="font-display pb-12 text-3xl font-black">Cadastrar Vaga</h1>
       <Card className="p-12">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -112,6 +112,6 @@ export default function CadastroPage() {
           </form>
         </Form>
       </Card>
-    </div>
+    </>
   );
 }
