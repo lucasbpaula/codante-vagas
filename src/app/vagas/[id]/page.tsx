@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import JobItemDescription from "./components/JobItemDescription";
@@ -8,7 +7,8 @@ import {
   MapPin,
   Users,
 } from "lucide-react";
-import { getJobById } from "./actions";
+import DeleteJobDialog from "./components/DeleteJobDialog";
+import { getJobById } from "../actions";
 
 type JobPageProps = {
   params: {
@@ -47,12 +47,7 @@ export default async function JobPage({ params }: JobPageProps) {
           </p>
         </div>
         <div className="flex items-end">
-          <Button
-            variant="outline"
-            className="cursor-pointer rounded-none border-red-400 px-6 py-3 text-red-400 hover:text-red-400"
-          >
-            Apagar Vaga
-          </Button>
+          <DeleteJobDialog jobId={id} />
         </div>
       </div>
 

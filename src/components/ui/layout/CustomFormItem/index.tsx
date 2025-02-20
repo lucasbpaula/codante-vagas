@@ -26,7 +26,7 @@ type CustomFormFieldProps = {
   name: FieldPath<FormSchemaType>;
   label: string;
   description?: string;
-  type?: "select" | "input" | "textarea";
+  type?: "select" | "input" | "textarea" | "number";
   options?: { label: string; value: string }[];
 };
 
@@ -44,15 +44,19 @@ export default function CustomFormField({
       case "input":
         return (
           <FormControl>
-            <Input {...field} />
+            <Input {...field} type={type} />
           </FormControl>
         );
       case "select":
         return (
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select
+            onValueChange={field.onChange}
+            defaultValue={field.value as string}
+            {...field}
+          >
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder="Select a verified email to display" />
+                <SelectValue placeholder="Selecione..." />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
@@ -68,6 +72,12 @@ export default function CustomFormField({
         return (
           <FormControl>
             <Textarea {...field} />
+          </FormControl>
+        );
+      case "number":
+        return (
+          <FormControl>
+            <Input {...field} type={type} />
           </FormControl>
         );
       default:
