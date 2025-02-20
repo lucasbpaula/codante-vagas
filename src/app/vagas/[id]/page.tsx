@@ -8,6 +8,7 @@ import {
   MapPin,
   Users,
 } from "lucide-react";
+import { getJobById } from "./actions";
 
 type JobPageProps = {
   params: {
@@ -19,32 +20,15 @@ export default async function JobPage({ params }: JobPageProps) {
   const { id } = await params;
   const {
     title,
+    company_website,
     company,
-    websiteCompany,
     city,
-    workingPeriod,
-    salary,
-    description,
     requirements,
-  } = {
-    title: "Web Designer",
-    company: "Google boladao",
-    websiteCompany: "https://www.google.com.br",
-    city: "São Paulo",
-    workingPeriod: "full-time",
-    salary: "10000",
-    description:
-      "O Google está em busca de um Web Designer talentoso e experiente para se juntar à sua equipe criativa. O candidato ideal deve possuir habilidades técnicas avançadas e uma forte compreensão das tendências de design modernas, juntamente com a capacidade de transformar conceitos criativos em experiências digitais impactantes e funcionais.",
-    requirements: `
-    - Experiência em Design: Mínimo de 5 anos de experiência comprovada como Web Designer ou em um cargo similar, preferencialmente em empresas de tecnologia ou agências digitais de grande porte.
-    - Portfólio de Trabalhos: Apresentação de um portfólio de design abrangente que demonstre habilidades excepcionais em design de interface
-    - Habilidades Técnicas: Proficiência em ferramentas de design e prototipagem como Adobe Creative Suite, Sketch, Figma, InVision, e outras ferramentas relevantes.
-    - Conhecimentos de HTML/CSS: Familiaridade com HTML, CSS e frameworks de frontend modernos (como React, Angular ou Vue.js) é altamente desejável.
-    - Pensamento Crítico e Criativo: Capacidade de resolver problemas complexos de design de maneira criativa e eficaz, com uma mentalidade centrada no usuário.
-    - Trabalho em Equipe: Excelentes habilidades de comunicação e colaboração, com a capacidade de receber e fornecer feedback construtivo.
-    - Gestão de Projetos: Habilidade para gerenciar múltiplos projetos simultaneamente, cumprindo prazos e mantendo altos padrões de qualidade.
-`,
-  };
+    description,
+    salary,
+    number_of_positions,
+    schedule,
+  } = await getJobById(id);
 
   return (
     <Card className="p-12">
@@ -54,7 +38,7 @@ export default async function JobPage({ params }: JobPageProps) {
           <p className="text-sm font-light text-gray-500">
             Vaga disponível no{" "}
             <a
-              href={websiteCompany}
+              href={company_website}
               target="_noblank"
               className="font-light text-blue-300 hover:text-blue-400"
             >
@@ -78,9 +62,7 @@ export default async function JobPage({ params }: JobPageProps) {
         <JobItemDescription
           title="Regime"
           icon={BriefcaseBusiness}
-          info={
-            workingPeriod === "full-time" ? "Período Integral" : "Meio Período"
-          }
+          info={schedule === "full-time" ? "Período Integral" : "Meio Período"}
         />
 
         <JobItemDescription
@@ -95,7 +77,7 @@ export default async function JobPage({ params }: JobPageProps) {
         <JobItemDescription
           title="Vagas na Empresa"
           icon={Users}
-          info="3 vagas"
+          info={number_of_positions}
         />
       </div>
 
@@ -107,7 +89,10 @@ export default async function JobPage({ params }: JobPageProps) {
       <Separator className="my-12" />
 
       <h3 className="font-display mb-5 text-lg font-black">Requisitos</h3>
-      <p className="text-gray-600">{requirements}</p>
+      <p
+        className="text-gray-600"
+        dangerouslySetInnerHTML={{ __html: requirements }}
+      />
     </Card>
   );
 }

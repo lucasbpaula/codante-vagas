@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
+import homeImg from "@/../public/home-img.png";
 
 export default function Home() {
   return (
@@ -10,15 +12,11 @@ export default function Home() {
       <Button
         variant="outline"
         className="mt-6 cursor-pointer rounded-none border-neutral-700 px-10 py-3 text-lg font-bold text-neutral-700 capitalize"
+        asChild
       >
-        Busque uma vaga
+        <Link href="/vagas">Busque uma vaga</Link>
       </Button>
-      <Image
-        src="/home-img.svg"
-        alt="pessoas felizes"
-        width={498}
-        height={379}
-      />
+      <Image src={homeImg} alt="pessoas felizes" />
     </div>
   );
 }

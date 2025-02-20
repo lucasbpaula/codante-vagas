@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import notFoundImg from "@/../public/404.png";
 
 export default function NotFoundPage() {
   return (
@@ -9,10 +10,9 @@ export default function NotFoundPage() {
         Nada encontrado aqui...
       </h1>
       <Image
-        src="/404.png"
+        src={notFoundImg}
         alt="2 fotos de criaturas"
-        height={450}
-        width={300}
+        className="h-72 w-72"
       />
       <p className="text-3xl font-light text-gray-500">
         Não foi possível encontrar a página solicitada.

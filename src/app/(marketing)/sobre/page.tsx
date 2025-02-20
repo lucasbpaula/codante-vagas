@@ -1,3 +1,4 @@
+import aboutImg from "@/../public/sobre-img.png";
 import Image from "next/image";
 
 export default function SobrePage() {
@@ -27,12 +28,7 @@ export default function SobrePage() {
         </div>
       </div>
 
-      <Image
-        src="/sobre-img.svg"
-        alt="pessoas felizes"
-        width={520}
-        height={375}
-      />
+      <Image src={aboutImg} alt="pessoas felizes" />
     </div>
   );
 }

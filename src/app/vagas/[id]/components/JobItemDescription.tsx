@@ -3,7 +3,7 @@ import { LucideIcon } from "lucide-react";
 type JobItemDescriptionProps = {
   icon: LucideIcon;
   title: string;
-  info: string;
+  info: string | number;
 };
 
 export default function JobItemDescription({
